@@ -26,6 +26,8 @@ func AppExecute(app, action string) string {
 	return output
 }
 
+// This can be drastically refactored as the only change is the action
+// I kept this "as is" incase we need to some other elaboration
 func start(app string) string {
 	if ok := isDeployed(app); ok {
 		logger.Trace("Application " + app)
