@@ -1,7 +1,7 @@
 # Argus
 
-The watchman service. It acts as a deploy/endeploy, start,stop and build of go webservices. It uses the isAlive endpoint in each web service to ensure the webservice is available (if not it will restart it)
-The argus service is intsalled using the systemd service ensuring it is always available. A simple script is used to allow for the systemd control 
+The watchman service. It acts as a deploy, undeploy, start, stop and build of go webservices. It uses the isalive endpoint in each web service to ensure the webservice is available (if not it will restart it)
+The argus service is installed using the systemd service ensuring it is always available. A simple script is used to allow for the systemd control 
 
 ```bash
 systemctl start argus.service
@@ -19,9 +19,9 @@ Argus is made up of a client and server component
 * Stop - executes a script to stop the web service
 * Build - builds the go executable
 
-A systemd service is use to ensure argus is always available (restart policy of 5 secs after a crash)
+A systemd service is used to ensure argus is always available (restart policy of 5 secs after a crash)
 Argus uses the 'isalive' endpoint on each web service to ensure high availability and will restart the service if its down
-The obvious choice of using a simple start/stop script is due to permissions (the rest api interface) does not have sudo or su permissions and
+The obvious choice of using a simple start/stop script is due to permissions the rest api interface does not have sudo or su permissions and
 therefore can't install a systemd service script.
 
 ### Client
