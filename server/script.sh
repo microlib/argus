@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# This script is called by the systemd.service script
 # This needs to be fixed
 export GOPATH=~/home/$USER/Projects
 PATH=$PATH:/usr/local/go/bin
