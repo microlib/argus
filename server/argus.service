@@ -1,0 +1,13 @@
+[Unit]
+Description=Argus monitor deploy and control applications
+After=syslog.target network.target auditd.service sshd.service
+
+[Service]
+Type=forking
+ExecStart=/bin/sh -c "/opt/microlib/argus/script.sh start"
+ExecStop=/bin/sh -c "/opt/microlib/argus/script.sh stop"
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
