@@ -1,7 +1,7 @@
 # Argus
 
-The watchman service. It acts as a deploy, undeploy, start, stop and build of go webservices. It uses the isalive endpoint in each web service to ensure the webservice is available (if not it will restart it)
-The argus service is installed using the systemd service ensuring it is always available. A simple script is used to allow for the systemd control 
+The watchman service. It is a web service that can deploy, undeploy, start, stop and build other golang webservices. It uses the isalive endpoint in each web service to ensure the webservice is available (if not it will restart it)
+The argus service is installed using systemd ensuring it is always available. A simple script is used to allow for the systemd control 
 
 ```bash
 systemctl start argus.service
@@ -21,14 +21,13 @@ Argus is made up of a client and server component
 
 A systemd service is used to ensure argus is always available (restart policy of 5 secs after a crash)
 Argus uses the 'isalive' endpoint on each web service to ensure high availability and will restart the service if its down
-The obvious choice of using a simple start/stop script is due to permissions the rest api interface does not have sudo or su permissions and
+The obvious choice of using a simple start/stop script is due to permissions, the rest api interface does not have sudo or su permissions and
 therefore can't install a systemd service script.
 
 ### Client
-Interfaces to the application-server list (via a config.json file)
-It will try deploy to the server providing the server has enough resources (via getserverstats endpoint)
-If the server does not have enough resources it will try the next server in the list unitl the complete server list has been checked
-The client has the functionaliy to deploy,undeploy,start,stop and build a webservice (golang only)
+Interfaces with the application-server's via a list set in the config.json file
+It will try deploy to a server providing the server has enough resources (via getserverstats endpoint)
+If the server does not have enough resources it will try the next server in the list untill the complete server list has been checked.
 
 Example usage (to deploy) :
 
